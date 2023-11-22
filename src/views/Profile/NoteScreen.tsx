@@ -130,7 +130,7 @@ const NoteScreen = ({navigation}) => {
       if (res.text) {
         setIdentifyContent(res.text);
         console.log(res.text);
-        //navigation.navigate('NewNote', {resText:res.text }); 
+        navigation.navigate('NewNote', {resText:res.text }); 
       }
       setSubmitLoading(false);
     });

@@ -4,7 +4,9 @@ import axios from 'axios';
 import { useRoute } from '@react-navigation/native';
 const CreateNewScreen = ({ navigation }) => {
   const [inputValue, setInputValue] = useState('');
-  const [resultText, setResultText] = useState('');
+  
+  const route = useRoute();
+  const resultText = route.params?.resText || 'No data';
  
 
   const handleNavigation = () => {
