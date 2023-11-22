@@ -22,8 +22,9 @@ import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import Toast from 'react-native-root-toast';
 import {mathpixText} from '../../api';
 import MathView from 'react-native-math-view';
+import { useRoute } from '@react-navigation/native';
 
-const NoteScreen = () => {
+const NoteScreen = ({navigation}) => {
   const captureRef = useRef(null);
   const canvasRef = useRef(null);
   const [paths, setPaths] = useState<SkPath[]>([]);
@@ -68,19 +69,19 @@ const NoteScreen = () => {
   const saveFunc = async () => {
     try {
       const uri = await captureRef.current.capture();
-      console.log('Snapshot captured:', uri);
+      //console.log('Snapshot captured:', uri);
       await CameraRoll.save(`file://${uri}`, {
         type: 'photo',
       });
      
-      const apiKey = '37792d52396383d2d8fa85a20cad210c'; // Replace with your ImgBB API key
+      const apiKey = '37792d52396383d2d8fa85a20cad210c'; 
       const apiUrl = 'https://api.imgbb.com/1/upload';
 
       const formData = new FormData();
       formData.append('image', {
         uri: uri,
-        type: 'image/jpeg', // Adjust the type based on the image type you're uploading
-        name: 'photo.jpg', // Adjust the name if needed
+        type: 'image/jpeg', 
+        name: 'photo.jpg', 
       });
 
       const response = await fetch(`${apiUrl}?key=${apiKey}`, {
@@ -116,7 +117,6 @@ const NoteScreen = () => {
 
   //submit
   const submitFunc = async () => {
-    console.log(imgurl);
     setIdentifyContent('');
     setSubmitLoading(true);
     let params = {
@@ -125,10 +125,12 @@ const NoteScreen = () => {
         ocr: ['math', 'text'],
       },
     };
+
     mathpixText(params).then(res => {
       if (res.text) {
         setIdentifyContent(res.text);
-        console.log(res.text)
+        console.log(res.text);
+        //navigation.navigate('NewNote', {resText:res.text }); 
       }
       setSubmitLoading(false);
     });
@@ -164,10 +166,8 @@ const NoteScreen = () => {
       </View>
       <View style={styles.identifyContent}>
         <Card header={<Text category="h6">Recognition results</Text>}>
-          {submitLoading ? <Spinner /> : <MathView
-        math={identifyContent} // Your LaTeX equation here
-        style={styles.mathView}
-      />
+          {submitLoading ? <Spinner /> : 
+            <MathView math={identifyContent} style={styles.mathView} />
           }
           
         </Card>

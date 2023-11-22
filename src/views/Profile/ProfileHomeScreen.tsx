@@ -8,6 +8,9 @@ const ProfileHomeScreen = ({navigation}) => {
   const meetFunc = () => {
     navigation.navigate('Note');
   };
+  const meetFunc2 = () => {
+    navigation.navigate('NewNote');
+  };
 
   return (
     <SafeAreaView>
@@ -19,7 +22,7 @@ const ProfileHomeScreen = ({navigation}) => {
             commonStyles.mb15,
           ]}>
           <MenuItem
-            title="Avatar"
+            title="Admin"
             style={[commonStyles.menuItem, {height: 60}]}
             accessoryRight={
               <View>
@@ -44,6 +47,14 @@ const ProfileHomeScreen = ({navigation}) => {
             title="Note"
             style={commonStyles.menuItem}
             onPress={meetFunc}
+            accessoryRight={<Icon name="arrow-ios-forward" />}
+          />
+        </Menu>
+        <Menu style={[commonStyles.appContainer]}>
+          <MenuItem
+            title="Create New"
+            style={commonStyles.menuItem}
+            onPress={meetFunc2}
             accessoryRight={<Icon name="arrow-ios-forward" />}
           />
         </Menu>

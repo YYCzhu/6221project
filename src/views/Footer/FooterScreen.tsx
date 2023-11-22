@@ -3,6 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ProfileScreen from '../Profile';
 import HomeScreen from '../Home/HomeScreen';
+import LoginScreen from '../Home/Login';
 import {
   Icon,
   Text,
@@ -30,6 +31,11 @@ const FooterScreen = () => {
             />
           ),
         }}
+      />
+      <Tab.Screen
+        name="Ulogin"
+        component={LoginScreen}
+        
       />
       <Tab.Screen
         name="User"
