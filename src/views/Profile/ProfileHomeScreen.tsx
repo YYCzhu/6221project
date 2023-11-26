@@ -6,12 +6,15 @@ import commonStyles from '../../styles/commonStyles';
 const ProfileHomeScreen = ({navigation}) => {
   //Note
   const meetFunc = () => {
-    navigation.navigate('Note');
+    navigation.navigate('AINote');
   };
   const meetFunc2 = () => {
     navigation.navigate('NewNote');
   };
 
+  const meetFunc3 = () => {
+    navigation.navigate('NoteHistory');
+  };
   return (
     <SafeAreaView>
       <View>
@@ -42,9 +45,18 @@ const ProfileHomeScreen = ({navigation}) => {
             }
           />
         </Menu>
+        
         <Menu style={[commonStyles.appContainer]}>
           <MenuItem
-            title="Note"
+            title="Create New"
+            style={commonStyles.menuItem}
+            onPress={meetFunc2}
+            accessoryRight={<Icon name="arrow-ios-forward" />}
+          />
+        </Menu>
+        <Menu style={[commonStyles.appContainer]}>
+          <MenuItem
+            title="AINote"
             style={commonStyles.menuItem}
             onPress={meetFunc}
             accessoryRight={<Icon name="arrow-ios-forward" />}
@@ -52,9 +64,9 @@ const ProfileHomeScreen = ({navigation}) => {
         </Menu>
         <Menu style={[commonStyles.appContainer]}>
           <MenuItem
-            title="Create New"
+            title="NoteHistory"
             style={commonStyles.menuItem}
-            onPress={meetFunc2}
+            onPress={meetFunc3}
             accessoryRight={<Icon name="arrow-ios-forward" />}
           />
         </Menu>

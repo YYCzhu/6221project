@@ -6,6 +6,8 @@ import NoteScreen from './NoteScreen';
 import CreateNewScreen from '../NoteView/CreateNote';
 import LoginScreen from '../Home/Login';
 import HomeScreen from '../Home/HomeScreen';
+import AINOte from '../NoteView/AINote';
+import NoteHistory from '../NoteView/NoteHistory';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,8 @@ const ProfileScreen = () => {
       <Stack.Screen name = "Login" component={LoginScreen} />
       <Stack.Screen name="Note" component={NoteScreen} />
       <Stack.Screen name="NewNote" component={CreateNewScreen} />
+      <Stack.Screen name="AINote" component={AINOte} />
+      <Stack.Screen name="NoteHistory" component={AINOte} />
     </Stack.Navigator>
   );
 };

@@ -86,7 +86,7 @@ const CreateNewScreen = ({ navigation }) => {
         />
       </View>
       <View style={[styles.buttonContainer]}>
-        <Button title="Save" onPress={handleButtonPress} />
+        <Button title="ADD" onPress={handleButtonPress} />
         <Button title="Insert Formula" onPress={handleNavigation} />
         <Button title="Save Note" onPress={saveNote} />
      {/* <Button title="Details" onPress={postData}/> */}
